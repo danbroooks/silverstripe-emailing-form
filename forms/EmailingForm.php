@@ -2,6 +2,8 @@
 
 class EmailingForm extends Form {
 
+	public $testing = false;
+
 	protected $to;
 	protected $from;
 	protected $subject;
@@ -12,6 +14,7 @@ class EmailingForm extends Form {
 		$e = new Email();
 
 		if ($this->testCondition($e, $data)) {
+			$this->testing = true;
 			$e->setTo(EmailTools::$testRouteAddress);
 		} else {
 			$e->setTo($this->to);
