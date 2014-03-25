@@ -1,0 +1,6 @@
+---
+name: Emailing Form
+---
+Email:
+  extensions:
+    - EmailExtension

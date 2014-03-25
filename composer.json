@@ -1,0 +1,18 @@
+{
+	"name": "silverstripe/emailing-form",
+	"description": "This module bundles the emailing process into a form object. It also supports the routing of emails to a test address.",
+	"type": "silverstripe-module",
+	"keywords": ["silverstripe", "email"],
+	"authors": [
+		{
+			"name": "Dan Brooks",
+			"email": "danger.dan_@hotmail.co.uk"
+		}
+	],
+	"require":
+	{
+		"silverstripe/cms": "~3.1",
+		"silverstripe/framework": "~3.1"
+	},
+	"minimum-stability": "dev"
+}
