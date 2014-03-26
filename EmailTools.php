@@ -3,22 +3,22 @@
 class EmailTools {
 
 	public static $testRouteAddress;
-	public static $testAddresses = array();
+	public static $testData = array();
 
 	public static function setTestRouteAddress($address) {
 		self::$testRouteAddress = $address;
 	}
 
-	public static function setTestAddresses($addresses) {
-		self::$testAddresses = $addresses;
+	public static function setTestData($data) {
+		self::$testData = $data;
 	}
 
-	public static function addTestAddress($address) {
-		array_push(self::$testAddresses, $address);
+	public static function addTestData($data) {
+		array_push(self::$testData, $data);
 	}
 
-	public static function isTestAddress($email) {
-		return in_array($email, self::$testAddresses);
+	public static function isTestData($data) {
+		return in_array($data, self::$testData);
 	}
 
 	public static function sanitize($val) {
