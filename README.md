@@ -8,7 +8,7 @@ Build the form as usual, but with `EmailingForm::create()` instead of `Form::cre
 EmailingForm exposes setting up the email via the form object.
 
 
-    public function ContactForm(
+    public function ContactForm() {
 
         // ...
 
