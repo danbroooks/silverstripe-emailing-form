@@ -2,48 +2,45 @@
 
 class EmailingForm extends Form {
 
-	public $testing = false;
+	public $testing;
+	protected $email;
 
-	protected $to;
-	protected $from;
-	protected $subject;
-	protected $emailTemplate;
+	public function __construct($controller, $name, FieldList $fields, FieldList $actions, $validator = null) {
+		parent::__construct($controller, $name, $fields, $actions, $validator);
+		$this->email = new Email();
+		$this->testing = false;
+	}
 
-	public function Send($data) {
+	public function Send($data = array()) {
 
-		$e = new Email();
-
-		if ($this->testCondition($e, $data)) {
+		if ($this->testCondition($this->email, $data)) {
 			$this->testing = true;
-			$e->setTo(EmailTools::$testRouteAddress);
-		} else {
-			$e->setTo($this->to);
+			$this->email->setTo(EmailTools::$testRouteAddress);
 		}
 
-		$data = EmailTools::sanitize($data);
-
-		$e->setFrom($this->from);
-		$e->addCustomHeader('Reply-To', $this->from);
-		$e->setSubject($this->subject);
-		$e->setTemplate($this->emailTemplate);
-		$e->populateTemplate($data);
-		$e->send();
+		$this->email->populateTemplate(EmailTools::sanitize($data));
+		$this->email->send();
 	}
 
 	public function setTo($to) {
-		$this->to = $to;
+		$this->email->setTo($to);
+		return $this;
 	}
 
 	public function setFrom($from) {
-		$this->from = $from;
+		$this->email->setFrom($from);
+		$this->email->addCustomHeader('Reply-To', $from);
+		return $this;
 	}
 
 	public function setSubject($subject) {
-		$this->subject = $subject;
+		$this->email->setSubject($subject);
+		return $this;
 	}
 
 	public function setEmailTemplate($emailTemplate) {
-		$this->emailTemplate = $emailTemplate;
+		$this->email->setTemplate($emailTemplate);
+		return $this;
 	}
 
 	public function testCondition($e, $data) {
@@ -54,7 +51,9 @@ class EmailingForm extends Form {
 		}
 	}
 
-	public function setTestCondition($func){
+	public function setTestCondition($func) {
 		$this->testCondition = $func;
+		return $this;
 	}
+
 }

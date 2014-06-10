@@ -1,6 +1,7 @@
 # Silverstripe emailing form
 
-This module bundles the emailing process into a form object. It also lets you route emails to a test address for manual testing of an email form.
+This module bundles the emailing process into a form object.
+It also lets you route emails to a test address for manual testing of an email form.
 
 ## Usage
 
@@ -30,6 +31,8 @@ Then in the form action simply do:
     public function SendForm($data, $form){
         $form->Send($data);
     }
+
+The `Send` method will automatically sanitize the data for you before loading it into the template.
 
 ## Test conditions
 
