@@ -19,7 +19,14 @@ class EmailingForm extends Form {
 		}
 
 		$this->email->populateTemplate(EmailTools::sanitize($data));
-		$this->email->send();
+
+		try {
+			$this->email->send();
+
+		} catch (Exception $e) {
+			SS_Log::log($e, SS_Log::ERR);
+
+		}
 	}
 
 	public function setTo($to) {
