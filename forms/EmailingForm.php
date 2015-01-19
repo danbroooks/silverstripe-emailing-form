@@ -55,6 +55,16 @@ class EmailingForm extends Form {
 		return $this;
 	}
 
+	public function attachFile($filename, $attachedFilename = null, $mimetype = null) {
+		$this->email->attachFile($filename, $attachedFilename = null, $mimetype = null);
+		return $this;
+	}
+
+	public function attachFileFromString($data, $filename, $mimetype = null) {
+		$this->email->attachFileFromString($data, $filename, $mimetype = null);
+		return $this;
+	}
+
 	public function testCondition($e, $data) {
 		if (EmailTools::$testRouteAddress && $func = $this->testCondition) {
 			return $func($e, $data);
