@@ -29,6 +29,11 @@ class EmailingForm extends Form {
 		}
 	}
 
+	public function setEmail($email) {
+		$this->email = $email;
+		return $this;
+	}
+
 	public function setTo($to) {
 		$this->email->setTo($to);
 		return $this;
