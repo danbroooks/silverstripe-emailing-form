@@ -7,7 +7,7 @@ class EmailingForm extends Form {
 
 	public function __construct($controller, $name, FieldList $fields, FieldList $actions, $validator = null) {
 		parent::__construct($controller, $name, $fields, $actions, $validator);
-		$this->email = new Email();
+		$this->email = Email::create();
 		$this->testing = false;
 	}
 
